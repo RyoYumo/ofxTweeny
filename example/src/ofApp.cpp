@@ -20,57 +20,6 @@ private:
     glm::vec3 pos_;
 };
 
-class BaseInstance {
-public:
-    BaseInstance(){}
-    BaseInstance(std::uint64_t life_time){}
-    virtual ~BaseInstance() = default;
-    
-    const float life() const { return life_; }
-    const bool  isDead() const { return life_ <= 0.0; }
-    virtual void play(std::uint64_t life_time){
-        ofxTweeny::Tweener::add(&life_, 1.0, 0.0, life_time);
-    }
-    
-    virtual void update() = 0;
-    virtual void draw() = 0;
-    
-private:
-    float life_;
-    
-};
-
-class InstanceManager {
-public:
-    
-    
-    
-private:
-    
-    
-};
-
-
-class Circle : public BaseInstance {
-public:
-    Circle(const glm::vec3& pos) : BaseInstance{}, pos_{pos}{}
-    
-    void update() override {
-        
-    }
-    
-    void draw() override {
-        
-    }
-    
-private:
-    glm::vec3 pos_;
-    
-};
-
-
-
-
 class ofApp : public ofBaseApp{
 public:
     void setup();
