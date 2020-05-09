@@ -104,6 +104,19 @@ public:
         add(&ptr->z, from.z, to.z, duration, f);
     }
     
+    template<typename EaseFunc=tweeny::easing::linearEasing>
+    static void add(ofFloatColor* ptr,
+                    const ofFloatColor& from,
+                    const ofFloatColor& to,
+                    float duration,
+                    EaseFunc f=linear){
+        add(&ptr->r, from.r, to.r, duration, f);
+        add(&ptr->g, from.g, to.g, duration, f);
+        add(&ptr->b, from.b, to.b, duration, f);
+        add(&ptr->a, from.a, to.a, duration, f);
+    }
+    
+    
     static void remove(float* ptr){
         auto& items = instance().items_;
         auto iter = std::find_if(items.begin(), items.end(), [ptr](const detail::TweenItem& item){
