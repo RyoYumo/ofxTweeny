@@ -4,7 +4,6 @@
 #include "../libs/tweeny/include/tweeny.h"
 #include <vector>
 #include "glm/glm.hpp"
-#include "ofEvents.h"
 
 namespace ofxTweeny{
 static constexpr auto linear = tweeny::easing::linear;
@@ -144,7 +143,7 @@ private:
         }
         
         bool complete() const override {
-            return tween_.progress() > 1.0 ? true : false;
+            return tween_.progress() >= 1.0 ? true : false;
         }
         
         void* ptr() const override {
