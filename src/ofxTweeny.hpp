@@ -48,44 +48,14 @@ public:
         instance().items_.push_back(item);
     }
     
-    template<typename EaseFunc=tweeny::easing::linearEasing>
-    static void add(float* ptr,
-                    float from,
-                    float to,
+    template<typename T, typename EaseFunc=tweeny::easing::linearEasing>
+    static void add(T* ptr,
+                    const T& from,
+                    const T& to,
                     float duration,
                     EaseFunc f=linear)
     {
-        add(ptr, Tween<float>::from(from).to(to).during(duration).via(f));
-    }
-    
-    
-    template<typename EaseFunc=tweeny::easing::linearEasing>
-    static void add(glm::vec2* ptr,
-                    const glm::vec2& from,
-                    const glm::vec2& to,
-                    float duration,
-                    EaseFunc f=linear)
-    {
-        add(ptr, Tween<glm::vec2>::from(from).to(to).during(duration).via(f));
-    }
-    
-    template<typename EaseFunc=tweeny::easing::linearEasing>
-    static void add(glm::vec3* ptr,
-                    const glm::vec3& from,
-                    const glm::vec3& to,
-                    float duration,
-                    EaseFunc f=linear)
-    {
-        add(ptr, Tween<glm::vec3>::from(from).to(to).during(duration).via(f));
-    }
-    
-    template<typename EaseFunc=tweeny::easing::linearEasing>
-    static void add(ofFloatColor* ptr,
-                    const ofFloatColor& from,
-                    const ofFloatColor& to,
-                    float duration,
-                    EaseFunc f=linear){
-        add(ptr, Tween<ofFloatColor>::from(from).to(to).during(duration).via(f));
+        add(ptr, Tween<T>::from(from).to(to).during(duration).via(f));
     }
     
     
