@@ -39,6 +39,7 @@ void ofApp::setup(){
     ofBackground(0,0,0);
     ofSetRectMode(OF_RECTMODE_CENTER);
     pos = glm::vec3(0);
+    ofxTweeny::Tweener::add(&radius, ofxTweeny::Tween::from(0).to(100).during(1000).to(50).during(1000));
 }
 
 //--------------------------------------------------------------
@@ -51,7 +52,7 @@ void ofApp::update(){
 void ofApp::draw(){
     camera.begin();
     ofNoFill();
-    ofDrawBox(0, 0, 0, 100);
+    ofDrawBox(0, 0, 0, radius);
     camera.end();
 }
 
