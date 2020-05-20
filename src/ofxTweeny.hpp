@@ -4,7 +4,7 @@
 #include "../libs/tweeny/include/tweeny.h"
 #include <vector>
 #include "glm/glm.hpp"
-#include "ofEvents.h"
+#include <iostream>
 
 namespace ofxTweeny{
 static constexpr auto linear = tweeny::easing::linear;
@@ -113,6 +113,7 @@ public:
     
     static void update(){
         auto& items = instance().items_;
+        std::cout << items.size() << std::endl;
         auto result = std::remove_if(items.begin(), items.end(), [](const std::shared_ptr<BaseTweenItem>& item){
             return item->complete();
         });
@@ -144,7 +145,7 @@ private:
         }
         
         bool complete() const override {
-            return tween_.progress() > 1.0 ? true : false;
+            return tween_.progress() >= 1.0 ? true : false;
         }
         
         void* ptr() const override {
