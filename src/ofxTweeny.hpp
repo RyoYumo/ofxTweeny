@@ -36,11 +36,11 @@ static constexpr auto easeInElastic  = tweeny::easing::elasticIn;
 static constexpr auto easeOutElastic  = tweeny::easing::elasticOut;
 static constexpr auto easeInOutElastic  = tweeny::easing::elasticInOut;
 
+using Tween = tweeny::tween<float>;
+
 namespace detail{
 class TweenItem {
 public:
-    using TweenType = tweeny::tween<float>;
-    
     template<typename EaseFunc>
     TweenItem(float* ptr,
               float from,
@@ -48,7 +48,12 @@ public:
               float duration, EaseFunc f)
     : ptr_{ptr}{
         *ptr_ = from;
-        tween_ = TweenType::from(from).to(to).during(duration).via(f);
+        tween_ = Tween::from(from).to(to).during(duration).via(f);
+    }
+    
+    TweenItem(float* ptr, const Tween& tween)
+    : ptr_{ptr}{
+        tween_ = tween;
     }
     
     void update(int step){
@@ -62,10 +67,10 @@ public:
     
 private:
     float* ptr_;
-    TweenType tween_;
+    Tween tween_;
 
 };
-}
+} // namespace detail
 
 class Tweener {
 public:
@@ -78,6 +83,12 @@ public:
     {
         remove(ptr);
         instance().items_.push_back(detail::TweenItem(ptr, from, to, duration, f));
+    }
+    
+    static void add(float* ptr, const Tween& tween)
+    {
+        remove(ptr);
+        instance().items_.push_back(detail::TweenItem(ptr, tween));
     }
     
     
