@@ -96,7 +96,7 @@ private:
     class BaseTweenItem {
     public:
         virtual ~BaseTweenItem() = default;
-        virtual void update(std::uint64_t tick) = 0;
+        virtual void update(std::uint16_t tick) = 0;
         virtual bool complete() const = 0;
         virtual void* ptr() const = 0;
     };
@@ -108,8 +108,8 @@ private:
         : ptr_{ptr}, tween_{tween}{
         }
         
-        void update(std::uint64_t tick) override {
-            *ptr_ = tween_.step(16);
+        void update(std::uint16_t tick) override {
+            *ptr_ = tween_.step(tick);
         }
         
         bool complete() const override {
