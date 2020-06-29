@@ -3,7 +3,6 @@
 
 #include "../libs/tweeny/include/tweeny.h"
 #include <vector>
-#include "glm/glm.hpp"
 
 namespace ofxTweeny{
 static constexpr auto linear = tweeny::easing::linear;
@@ -52,7 +51,7 @@ public:
     static void add(T* ptr,
                     const T& from,
                     const T& to,
-                    float duration,
+                    std::uint16_t duration,
                     EaseFunc f=linear)
     {
         add(ptr, Tween<T>::from(from).to(to).during(duration).via(f));
@@ -60,7 +59,7 @@ public:
     
     
     template<typename T, typename EaseFunc=tweeny::easing::linearEasing>
-    static void add(T* ptr, const std::vector<T>& to, float duration, EaseFunc f=linear){
+    static void add(T* ptr, const std::vector<T>& to, std::uint16_t duration, EaseFunc f=linear){
         auto tween = Tween<T>::from(*ptr);
         for(auto i = 0; i < to.size(); ++i){
             tween.to(to[i]).during(duration).via(f);
