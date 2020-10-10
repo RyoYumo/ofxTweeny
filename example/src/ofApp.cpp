@@ -5,6 +5,7 @@ class Camera : public ofEasyCam {
 public:
     Camera() : ofEasyCam(){
         pos_ = glm::vec3{0,0,300};
+        ofEasyCam::disableMouseInput();
     }
     
     void update(){
@@ -13,7 +14,7 @@ public:
     }
     
     void position(const glm::vec3& to){
-        ofxTweeny::Tweener::add(&pos_, pos_, to, 2000, ofxTweeny::easeOutExpo);
+        ofxTweeny::Tweener::add(&pos_, pos_, to, 500, ofxTweeny::easeOutExpo);
     }
     
 private:
