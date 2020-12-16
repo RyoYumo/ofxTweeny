@@ -20,7 +20,7 @@ void ofApp::update() {
 
 ### 2. Call ofxTweeny::Tweener::add(...)
 
-Simple Example
+** SimpleExample **
 ```cpp
 float value = 0.0;
 void ofApp::keyPressed(int key) {
@@ -30,5 +30,3 @@ void ofApp::keyPressed(int key) {
     ofxTweeny::Tweener::add(&value, from, to, duration);
 }
 ```
-
-    
