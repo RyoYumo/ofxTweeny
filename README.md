@@ -11,7 +11,7 @@ git clone --recursive https://github.com/RyoYumo/ofxTweeny.git
 
 ## How to use
 
-### ofxTweeny::Tweener::update() in ofApp::update()
+### Call ofxTweeny::Tweener::update() in ofApp::update()
 ```cpp
 void ofApp::update() {
     ofxTweeny::Tweener::update();
