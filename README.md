@@ -41,4 +41,4 @@ void ofApp::keyPressed(int key) {
     ofxTweeny::Tweener::add(&value, from, to, duration, ofxTweeny::easeOutCirc);
 }
 ```
-[Ease functions](https://github.com/RyoYumo/ofxTweeny/blob/master/src/ofxTweeny.hpp#8)
+[Ease functions](https://github.com/RyoYumo/ofxTweeny/blob/master/src/ofxTweeny.hpp#L8-L35)
