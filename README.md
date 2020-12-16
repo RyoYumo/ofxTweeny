@@ -27,7 +27,7 @@ void ofApp::keyPressed(int key) {
     float from = value;
     float to = ofRandomf();
     int duration = 1000; // ms
-    ofxTweeny::Tweener(&value, from, to, duration);
+    ofxTweeny::Tweener::add(&value, from, to, duration);
 }
 ```
 
