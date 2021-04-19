@@ -37,6 +37,9 @@ private:
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    int fps = 60;
+    ofxTweeny::Tweener::set_fps(fps);
+    ofSetFrameRate(fps);
     ofBackground(0,0,0);
     ofSetRectMode(OF_RECTMODE_CENTER);
     pos = glm::vec3(0);
@@ -55,6 +58,7 @@ void ofApp::draw(){
     ofNoFill();
     ofDrawBox(0, 0, 0, radius);
     camera.end();
+    ofDrawBitmapString("Press space-key", 20, 20);
 }
 
 void ofApp::keyPressed(int key){
