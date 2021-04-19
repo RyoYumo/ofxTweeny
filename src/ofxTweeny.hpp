@@ -86,8 +86,12 @@ public:
         });
         items.erase(result, items.end());
         std::for_each(items.begin(), items.end(), [](std::shared_ptr<BaseTweenItem>& item){
-            item->update(kTick);
+            item->update(instance().tick_);
         });
+    }
+
+    static void set_fps(int fps) {
+        instance().tick_ = 1000 / fps;
     }
     
 private:
@@ -125,7 +129,7 @@ private:
         
     };
     
-    static constexpr auto kTick = 16;
+    std::uint16_t tick_ { 16 };
     Tweener(){}
     static Tweener& instance(){
         static Tweener instance{};
